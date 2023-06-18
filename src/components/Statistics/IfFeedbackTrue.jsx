@@ -2,17 +2,15 @@ import { StatItem } from './Statistics.styled';
 
 export const IfFeedbackTrue = ({
   state,
-  options,
-  id,
   countTotalFeedback,
   positivePercentage,
 }) => {
   return (
     <>
-      {options.map(key => {
+      {Object.entries(state).map(([key, value]) => {
         return (
-          <StatItem key={id()}>
-            {key}: {state[key]}
+          <StatItem key={key}>
+            {key}: {value}
           </StatItem>
         );
       })}

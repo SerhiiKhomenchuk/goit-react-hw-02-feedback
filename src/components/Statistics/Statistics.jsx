@@ -4,7 +4,6 @@ import { Notification } from './Notification';
 export const Statistics = ({
   state,
   options,
-  id,
   countTotalFeedback,
   positivePercentage,
 }) => {
@@ -15,10 +14,9 @@ export const Statistics = ({
         <IfFeedbackTrue
           state={state}
           options={options}
-          id={id}
           countTotalFeedback={countTotalFeedback}
           positivePercentage={positivePercentage}
-        ></IfFeedbackTrue>
+        />
       ) : (
         <Notification message="There is no feedback"></Notification>
       )}

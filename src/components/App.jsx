@@ -1,9 +1,6 @@
 import { Component } from 'react';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
-import ShortUniqueId from 'short-unique-id';
-
-const id = new ShortUniqueId();
 
 export class App extends Component {
   state = {
@@ -11,21 +8,16 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  onLeaveFeedback = evtTargetName => {
+  onLeaveFeedback = option => {
     this.setState(prevState => {
       return {
-        [evtTargetName]: (prevState[evtTargetName] += 1),
-        ...this.state,
+        [option]: prevState[option] + 1,
       };
     });
   };
   countTotalFeedback = () => {
     const values = Object.values(this.state);
-    let total = values.reduce(
-      (accumulator, current) => accumulator + current,
-      0
-    );
-    return total;
+    return values.reduce((accumulator, current) => accumulator + current, 0);
   };
   countPositiveFeedbackPercentage = () => {
     let percentage = this.countTotalFeedback()
@@ -50,13 +42,10 @@ export class App extends Component {
         }}
       >
         <FeedbackOptions
-          id={id}
           options={options}
           onLeaveFeedback={this.onLeaveFeedback}
         />
         <Statistics
-          id={id}
-          options={options}
           state={this.state}
           countTotalFeedback={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
