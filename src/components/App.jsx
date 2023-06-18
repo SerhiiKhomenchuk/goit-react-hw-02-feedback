@@ -8,6 +8,7 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
+  
   onLeaveFeedback = option => {
     this.setState(prevState => {
       return {
@@ -15,16 +16,19 @@ export class App extends Component {
       };
     });
   };
+
   countTotalFeedback = () => {
     const values = Object.values(this.state);
     return values.reduce((accumulator, current) => accumulator + current, 0);
   };
+
   countPositiveFeedbackPercentage = () => {
     let percentage = this.countTotalFeedback()
       ? ((this.state.good / this.countTotalFeedback()) * 100).toFixed(0)
       : 0;
     return percentage;
   };
+
   render() {
     const options = Object.keys(this.state);
 

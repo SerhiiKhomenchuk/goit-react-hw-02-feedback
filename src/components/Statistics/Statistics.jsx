@@ -7,6 +7,7 @@ export const Statistics = ({
   countTotalFeedback,
   positivePercentage,
 }) => {
+  
   return (
     <>
       <h2> Statistics</h2>

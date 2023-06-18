@@ -14,6 +14,7 @@ export const IfFeedbackTrue = ({
           </StatItem>
         );
       })}
+
       <StatItem>Total: {countTotalFeedback}</StatItem>
       <StatItem>Positive feedback: {positivePercentage}%</StatItem>
     </>
